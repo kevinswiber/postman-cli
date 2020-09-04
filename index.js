@@ -19,6 +19,7 @@ program
 
 program
   .command('sync')
+  .option('-d, --debug', 'Enable smart debug options')
   .description('Sync local files to Postman Collection')
   .action(sync)
 

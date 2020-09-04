@@ -13,9 +13,10 @@ module.exports = {
         return collection
       } catch (e) {}
     },
-    write: (collection) => {
+    write: (collection, debug = false) => {
       try {
-        const filename = `${collection.info.name}.postman_collection.json`
+        const debugExtension = debug ? '.debug' : ''
+        const filename = `${collection.info.name}${debugExtension}.postman_collection.json`
 
         config.set({ POSTMAN_COLLECTION_FILENAME: filename }, { merge: true })
         fs.writeFileSync(filename, JSON.stringify(collection, null, 2))
