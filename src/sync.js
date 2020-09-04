@@ -92,7 +92,6 @@ function readItemFile (path) {
 function evalWrap (b, opts) {
   const addHooks = () => {
     b.pipeline.get('debug').push(through.obj((row, _enc, next) => {
-      console.log(row)
       row.source += '\n//# sourceURL=' + encodeURI(`file://${process.cwd()}/${row.file}`)
       row.source = `eval(${JSON.stringify(row.source)});`
       next(null, row)
